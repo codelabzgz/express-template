@@ -13,6 +13,7 @@
   },
   "description": "",
   "devDependencies": {
+    "@redocly/cli": "^1.27.2",
     "drizzle-kit": "^0.30.2",
     "vercel": "^39.3.0"
   },
@@ -29,7 +30,10 @@
     "start": "node api/index.js",
     "dev": "node api/index.js",
     "dev:vercel": "vercel dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:start": "redocly preview-docs",
+    "docs:build": "redocly bundle -o dist/bundle.yaml",
+    "docs:test": "redocly lint"
   },
   "version": "1.0.0"
 }
