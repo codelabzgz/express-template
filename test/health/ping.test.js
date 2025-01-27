@@ -1,9 +1,14 @@
 import { expect, test } from "vitest";
 
-function sum(a, b) {
-  return a + b;
-}
+test("/health/ping", async () => {
+  const response = await fetch("http://localhost:3000/health/ping");
+  const data = await response.json();
+  expect(response.status).toBe(200);
+  expect(data).toHaveProperty("health");
+  expect(typeof data.health).toBe("string");
+});
 
-test("adds 1 + 2 to equal 3", () => {
-  expect(sum(1, 2)).toBe(3);
+test("/health/secured-ping", async () => {
+  const response = await fetch("http://localhost:3000/health/secured-ping");
+  expect(response.status).toBe(401);
 });

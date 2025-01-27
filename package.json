@@ -34,10 +34,10 @@
     "url": "git+https://github.com/codelabzgz/express-template.git"
   },
   "scripts": {
-    "start": "node --env-file=.env.prod api/index.js",
-    "dev": "node --env-file=.env.dev --watch api/index.js",
+    "start": "node --env-file=.env.prod api/server.js",
+    "dev": "node --env-file=.env.dev --watch api/server.js",
     "dev:vercel": "vercel dev",
-    "test": "vitest --env-file=.env.test",
+    "test": "vitest",
     "coverage": "vitest run --coverage",
     "docs:build": "redocly bundle -o dist/bundle.yaml",
     "docs:start": "redocly preview-docs",
@@ -46,6 +46,10 @@
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "node db/seeds/index.js",
     "db:studio": "drizzle-kit studio"
+  },
+  "imports": {
+    "#api/*": "./api/*",
+    "#db/*": "./db/*"
   },
   "version": "1.0.0"
 }
