@@ -3,6 +3,7 @@
   "bugs": {
     "url": "https://github.com/codelabzgz/express-template/issues"
   },
+  "type": "module",
   "dependencies": {
     "@auth/drizzle-adapter": "^1.7.4",
     "@auth/express": "^0.8.4",
@@ -17,7 +18,7 @@
     "@redocly/cli": "^1.27.2",
     "@vitest/coverage-v8": "^3.0.4",
     "drizzle-kit": "^0.30.2",
-    "vercel": "^39.3.0",
+    "vercel": "^32.3.0",
     "vitest": "^3.0.4"
   },
   "engines": {
@@ -33,10 +34,10 @@
     "url": "git+https://github.com/codelabzgz/express-template.git"
   },
   "scripts": {
-    "start": "node api/index.js",
-    "dev": "node api/index.js",
+    "start": "node --env-file=.env.prod api/index.js",
+    "dev": "node --env-file=.env.dev --watch api/index.js",
     "dev:vercel": "vercel dev",
-    "test": "vitest",
+    "test": "vitest --env-file=.env.test",
     "coverage": "vitest run --coverage",
     "docs:build": "redocly bundle -o dist/bundle.yaml",
     "docs:start": "redocly preview-docs",
