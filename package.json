@@ -14,8 +14,10 @@
   "description": "",
   "devDependencies": {
     "@redocly/cli": "^1.27.2",
+    "@vitest/coverage-v8": "^3.0.4",
     "drizzle-kit": "^0.30.2",
-    "vercel": "^39.3.0"
+    "vercel": "^39.3.0",
+    "vitest": "^3.0.4"
   },
   "homepage": "https://github.com/codelabzgz/express-template#readme",
   "license": "",
@@ -30,7 +32,8 @@
     "start": "node api/index.js",
     "dev": "node api/index.js",
     "dev:vercel": "vercel dev",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "docs:start": "redocly preview-docs",
     "docs:build": "redocly bundle -o dist/bundle.yaml",
     "docs:test": "redocly lint"

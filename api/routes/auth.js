@@ -1,5 +1,4 @@
-import express from "express";
-import { usersSelectSchema, usersInsertSchema } from "@db/schemas/schema";
+import { Router } from "express";
 import * as authCtrl from "@controllers/auth";
 
 const router = express.Router();
