@@ -1,6 +1,6 @@
 import { ExpressAuth } from "@auth/express";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import { db } from "@db/schema";
+import { db } from "../db/index.js";
 import express from "express";
 
 const app = express();

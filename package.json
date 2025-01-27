@@ -4,6 +4,7 @@
     "url": "https://github.com/codelabzgz/express-template/issues"
   },
   "dependencies": {
+    "@auth/drizzle-adapter": "^1.7.4",
     "@auth/express": "^0.8.4",
     "@libsql/client": "^0.14.0",
     "drizzle-orm": "^0.38.4",
@@ -19,11 +20,14 @@
     "vercel": "^39.3.0",
     "vitest": "^3.0.4"
   },
+  "engines": {
+    "node": "22.x",
+    "npm": "11.x"
+  },
   "homepage": "https://github.com/codelabzgz/express-template#readme",
   "license": "",
   "main": "api/index.js",
   "name": "express-template",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codelabzgz/express-template.git"
@@ -34,9 +38,13 @@
     "dev:vercel": "vercel dev",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "docs:start": "redocly preview-docs",
     "docs:build": "redocly bundle -o dist/bundle.yaml",
-    "docs:test": "redocly lint"
+    "docs:start": "redocly preview-docs",
+    "docs:test": "redocly lint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "node db/seeds/index.js",
+    "db:studio": "drizzle-kit studio"
   },
   "version": "1.0.0"
 }

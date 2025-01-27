@@ -2,11 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@api": ["./api/*"],
-      "@db": ["./db/*"],
+      "@api/*": ["./api/*"],
+      "@db/*": ["./db/*"]
     }
   },
   "exclude": [
-    "node_modules",
+    "node_modules"
   ]
 }

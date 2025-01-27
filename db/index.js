@@ -1,10 +1,10 @@
 import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
-import { accounts } from "@db/schemas/accounts";
-import { authenticators } from "@db/schemas/authenticators";
-import { sessions } from "@db/schemas/sessions";
-import { users } from "@db/schemas/users";
-import { verificationTokens } from "@db/schemas/verificationTokens";
+import { accounts } from "./schemas/accounts";
+import { authenticators } from "./schemas/authenticators";
+import { sessions } from "./schemas/sessions";
+import { users } from "./schemas/users";
+import { verificationTokens } from "./schemas/verificationTokens";
 
 const client = createClient({
   connection: {
