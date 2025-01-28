@@ -1,5 +1,5 @@
-import { Router } from 'express'
 import * as healthCtrl from '#api/controllers/health.js'
+import { Router } from 'express'
 
 const router = Router()
 

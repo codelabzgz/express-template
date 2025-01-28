@@ -1,44 +1,22 @@
 {
+  "name": "express-template",
+  "version": "1.0.0",
+  "description": "A starter template for building RESTful APIs using Express.js, optimized for scalability and maintainability.",
   "author": "codelabzgz",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "api/app.js",
+  "homepage": "https://github.com/codelabzgz/express-template#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codelabzgz/express-template.git"
+  },
   "bugs": {
     "url": "https://github.com/codelabzgz/express-template/issues"
-  },
-  "type": "module",
-  "dependencies": {
-    "@libsql/client": "^0.14.0",
-    "cors": "^2.8.5",
-    "drizzle-orm": "^0.38.4",
-    "drizzle-zod": "^0.6.1",
-    "express": "^4.21.2",
-    "morgan": "^1.10.0",
-    "zod": "^3.24.1"
-  },
-  "description": "express-template",
-  "devDependencies": {
-    "@dotenvx/dotenvx": "^1.34.0",
-    "@eslint/js": "^9.19.0",
-    "@faker-js/faker": "^9.4.0",
-    "@redocly/cli": "^1.27.2",
-    "@vitest/coverage-v8": "^3.0.4",
-    "drizzle-kit": "^0.30.2",
-    "globals": "^15.14.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
-    "standard": "^17.1.2",
-    "vercel": "^32.3.0",
-    "vitest": "^3.0.4"
   },
   "engines": {
     "node": "22.x",
     "npm": "11.x"
-  },
-  "homepage": "https://github.com/codelabzgz/express-template#readme",
-  "license": "UNLICENSED",
-  "main": "api/index.js",
-  "name": "express-template",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/codelabzgz/express-template.git"
   },
   "scripts": {
     "start": "node --env-file=.env api/server.js",
@@ -52,9 +30,33 @@
     "docs:test": "redocly lint",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "dotenvx run --env-file=.env drizzle-kit migrate",
-    "db:seed": "node db/seeds/index.js",
     "db:studio": "dotenvx run --env-file=.env drizzle-kit studio",
+    "db:seed": "node db/seeds/index.js",
     "prepare": "husky || true"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "cors": "^2.8.5",
+    "drizzle-orm": "^0.38.4",
+    "drizzle-zod": "^0.6.1",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "pino-http": "^10.4.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@dotenvx/dotenvx": "^1.34.0",
+    "@eslint/js": "^9.19.0",
+    "@faker-js/faker": "^9.4.0",
+    "@redocly/cli": "^1.27.2",
+    "@vitest/coverage-v8": "^3.0.4",
+    "drizzle-kit": "^0.30.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "pino-pretty": "^13.0.0",
+    "standard": "^17.1.2",
+    "vercel": "^32.3.0",
+    "vitest": "^3.0.4"
   },
   "imports": {
     "#api/*": "./api/*",
@@ -64,6 +66,5 @@
     "*.js": [
       "npm run lint"
     ]
-  },
-  "version": "1.0.0"
+  }
 }
