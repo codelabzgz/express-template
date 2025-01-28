@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "node --env-file=.env --watch dist/api/server.js",
-    "build": "npm run db:migrate && swc api -d dist",
+    "build": "swc api -d dist",
     "dev": "node --env-file=.env --watch api/server.js",
     "dev:vercel": "vercel dev",
     "lint": "standard --fix",
