@@ -25,8 +25,9 @@
     "lint": "standard --fix",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "docs:build": "redocly bundle -o dist/bundle.yaml",
+    "docs:build": "redocly bundle -o dist/bundle.yaml sample@v1",
     "docs:start": "redocly preview-docs",
+    "docs:generate": "npx @redocly/cli build-docs openapi/openapi.yaml",
     "docs:test": "redocly lint",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "dotenvx run --env-file=.env drizzle-kit migrate",
@@ -65,6 +66,9 @@
   "lint-staged": {
     "*.js": [
       "npm run lint"
+    ],
+    "openapi/**/*": [
+      "npm run docs:test"
     ]
   }
 }
