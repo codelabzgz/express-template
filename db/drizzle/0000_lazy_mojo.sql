@@ -36,6 +36,8 @@ CREATE TABLE `session` (
 CREATE TABLE `user` (
 	`id` text PRIMARY KEY NOT NULL,
 	`name` text,
+	`salt` text NOT NULL,
+	`password` text NOT NULL,
 	`email` text,
 	`emailVerified` integer,
 	`image` text

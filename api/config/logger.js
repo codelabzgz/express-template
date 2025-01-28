@@ -13,7 +13,7 @@ export const loggerHttp = {
     ignore: (req) => req.url === '/favicon.ico'
   },
   customSuccessMessage: (req, res, responseTime) => {
-    const method = req.method
+    const method = req.method.padEnd(6)
     const url = req.url.padEnd(45)
     const status = `${res.statusCode}`.padStart(4)
     const time = `${responseTime.toFixed(2)} ms`
@@ -21,7 +21,7 @@ export const loggerHttp = {
     return `${method} ${url} ${status} ${time}`
   },
   customErrorMessage: (req, res, err, responseTime) => {
-    const method = req.method
+    const method = req.method.padEnd(6)
     const url = req.url.padEnd(45)
     const status = `${res.statusCode}`.padStart(5)
     const time = `${responseTime.toFixed(2)} ms`

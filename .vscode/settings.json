@@ -5,7 +5,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",
     "source.sortImports": "always",
-    "source.removeUnusedImports": "always",
+    // "source.removeUnusedImports": "always",
   },
   "files.autoSave": "off",
   "files.eol": "\n",
