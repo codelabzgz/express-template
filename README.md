@@ -9,3 +9,4 @@
 [![Drizzle Badge](https://img.shields.io/badge/Drizzle-C5F74F?logo=drizzle&logoColor=000&style=for-the-badge)](https://orm.drizzle.team/)
 [![Turso Badge](https://img.shields.io/badge/Turso-4FF8D2?logo=turso&logoColor=000&style=for-the-badge)](https://turso.tech/)
 [![StandardJS Badge](https://img.shields.io/badge/StandardJS-F3DF49?logo=standardjs&logoColor=000&style=for-the-badge)](https://standardjs.com/)
+[![pino Badge](https://img.shields.io/badge/pino-687634?logo=pino&logoColor=fff&style=for-the-badge)](https://getpino.io/)
