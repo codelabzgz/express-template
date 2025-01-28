@@ -1,9 +1,5 @@
-import {
-  integer,
-  sqliteTable,
-  text,
-  primaryKey,
-} from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { users } from "#db/schemas/users.js";
 
 export const sessions = sqliteTable("session", {
   sessionToken: text("sessionToken").primaryKey(),

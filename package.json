@@ -5,16 +5,18 @@
   },
   "type": "module",
   "dependencies": {
-    "@auth/drizzle-adapter": "^1.7.4",
-    "@auth/express": "^0.8.4",
     "@libsql/client": "^0.14.0",
+    "cors": "^2.8.5",
     "drizzle-orm": "^0.38.4",
     "drizzle-zod": "^0.6.1",
     "express": "^4.21.2",
+    "morgan": "^1.10.0",
     "zod": "^3.24.1"
   },
   "description": "",
   "devDependencies": {
+    "@dotenvx/dotenvx": "^1.34.0",
+    "@faker-js/faker": "^9.4.0",
     "@redocly/cli": "^1.27.2",
     "@vitest/coverage-v8": "^3.0.4",
     "drizzle-kit": "^0.30.2",
@@ -34,8 +36,8 @@
     "url": "git+https://github.com/codelabzgz/express-template.git"
   },
   "scripts": {
-    "start": "node --env-file=.env.prod api/server.js",
-    "dev": "node --env-file=.env.dev --watch api/server.js",
+    "start": "node --env-file=.env api/server.js",
+    "dev": "node --env-file=.env --watch api/server.js",
     "dev:vercel": "vercel dev",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -43,9 +45,9 @@
     "docs:start": "redocly preview-docs",
     "docs:test": "redocly lint",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
+    "db:migrate": "dotenvx run --env-file=.env drizzle-kit migrate",
     "db:seed": "node db/seeds/index.js",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "dotenvx run --env-file=.env drizzle-kit studio"
   },
   "imports": {
     "#api/*": "./api/*",

@@ -4,6 +4,7 @@ import {
   text,
   primaryKey,
 } from "drizzle-orm/sqlite-core";
+import { users } from "#db/schemas/users.js";
 
 export const accounts = sqliteTable(
   "account",

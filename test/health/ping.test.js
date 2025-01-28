@@ -7,8 +7,3 @@ test("/health/ping", async () => {
   expect(data).toHaveProperty("health");
   expect(typeof data.health).toBe("string");
 });
-
-test("/health/secured-ping", async () => {
-  const response = await fetch("http://localhost:3000/health/secured-ping");
-  expect(response.status).toBe(401);
-});
