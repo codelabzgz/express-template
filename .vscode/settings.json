@@ -1,0 +1,16 @@
+{
+  "editor.defaultFormatter": "standard.vscode-standard",
+  "editor.formatOnSave": true,
+  "javascript.validate.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.sortImports": "always",
+    "source.removeUnusedImports": "always",
+  },
+  "files.autoSave": "off",
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "standard.enable": true,
+  "standard.autoFixOnSave": true,
+  "standard.run": "onType",
+}

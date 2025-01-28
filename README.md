@@ -8,5 +8,4 @@
 [![Zod Badge](https://img.shields.io/badge/Zod-3E67B1?logo=zod&logoColor=fff&style=for-the-badge)](https://zod.dev/)
 [![Drizzle Badge](https://img.shields.io/badge/Drizzle-C5F74F?logo=drizzle&logoColor=000&style=for-the-badge)](https://orm.drizzle.team/)
 [![Turso Badge](https://img.shields.io/badge/Turso-4FF8D2?logo=turso&logoColor=000&style=for-the-badge)](https://turso.tech/)
-[![ESLint Badge](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=fff&style=for-the-badge)](https://eslint.org/)
-[![Prettier Badge](https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=fff&style=for-the-badge)](https://prettier.io/)
+[![StandardJS Badge](https://img.shields.io/badge/StandardJS-F3DF49?logo=standardjs&logoColor=000&style=for-the-badge)](https://standardjs.com/)

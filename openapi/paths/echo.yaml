@@ -8,7 +8,7 @@ post:
     - api_key: []
     - basic_auth: []
   responses:
-    '200':
+    "200":
       description: OK
       headers:
         X-Rate-Limit:
@@ -24,34 +24,34 @@ post:
             type: string
           examples:
             response:
-              value: 'Hello world!'
+              value: "Hello world!"
         application/xml:
           schema:
             type: string
           examples:
             xml:
-              value: '<response>Hello world in XML!</response>'
+              value: "<response>Hello world in XML!</response>"
         text/csv:
           schema:
             type: string
-    '400':
+    "400":
       description: Unauthorized
   requestBody:
     content:
       application/json:
         schema:
           type: string
-          example: 'Hello world!'
+          example: "Hello world!"
       application/xml:
         schema:
           type: string
-          example: 'Hello world in XML!'
+          example: "Hello world in XML!"
     description: "Example Echo payload. When the response is received, its contents should match the contents from the payload."
     required: true
   x-codeSamples:
     - lang: C#
       source:
-        $ref: '../code_samples/C_sharp/echo/post.cs'
+        $ref: "../code_samples/C_sharp/echo/post.cs"
     - lang: PHP
       source:
-        $ref: '../code_samples/PHP/echo/post.php'
+        $ref: "../code_samples/PHP/echo/post.php"

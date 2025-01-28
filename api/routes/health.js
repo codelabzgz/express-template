@@ -1,8 +1,8 @@
-import { Router } from "express";
-import * as healthCtrl from "#api/controllers/health.js";
+import { Router } from 'express'
+import * as healthCtrl from '#api/controllers/health.js'
 
-const router = Router();
+const router = Router()
 
-router.get("/ping", healthCtrl.ping);
+router.get('/ping', healthCtrl.ping)
 
-export default router;
+export default router
