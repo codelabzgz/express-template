@@ -1,0 +1,15 @@
+services:
+  express:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: express-template
+    env_file:
+      - .env
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    user: "1000:1000"
+    read_only: true
