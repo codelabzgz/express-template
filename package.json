@@ -67,7 +67,7 @@
     "*.js": [
       "npm run lint"
     ],
-    "openapi/**/*": [
+    "openapi/**/*.{yml,yaml,json,md}": [
       "npm run docs:test"
     ]
   }

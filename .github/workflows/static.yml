@@ -5,6 +5,10 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+    paths:
+      - "./docs/**"
+      - "./openapi/**"
+      - "redocly.yaml"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,6 +43,7 @@ jobs:
         run: |
           npm run docs:generate
           RANDOM_HEX=$(openssl rand -hex 3)
+          echo "folder_name=$RANDOM_HEX" >> $GITHUB_ENV
           mkdir -p ./$RANDOM_HEX
           mv redoc-static.html ./$RANDOM_HEX/index.html
 
