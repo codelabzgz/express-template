@@ -9,6 +9,10 @@ on:
       - "./docs/**"
       - "./openapi/**"
       - "redocly.yaml"
+      - ".github/workflows/development.yml"
+
+  workflow_dispatch:
+
 jobs:
   Deploy-Development:
     runs-on: ubuntu-latest
