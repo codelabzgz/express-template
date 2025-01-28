@@ -61,7 +61,7 @@
     "#db/*": "./db/*"
   },
   "lint-staged": {
-    "*.{js}": [
+    "*.js": [
       "npm run lint"
     ]
   },
