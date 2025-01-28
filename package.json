@@ -22,6 +22,7 @@
     "@vitest/coverage-v8": "^3.0.4",
     "drizzle-kit": "^0.30.2",
     "globals": "^15.14.0",
+    "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
     "standard": "^17.1.2",
     "vercel": "^32.3.0",
@@ -52,14 +53,17 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "dotenvx run --env-file=.env drizzle-kit migrate",
     "db:seed": "node db/seeds/index.js",
-    "db:studio": "dotenvx run --env-file=.env drizzle-kit studio"
+    "db:studio": "dotenvx run --env-file=.env drizzle-kit studio",
+    "prepare": "husky || true"
   },
   "imports": {
     "#api/*": "./api/*",
     "#db/*": "./db/*"
   },
   "lint-staged": {
-    "*.js": "npm run lint"
+    "*.{js}": [
+      "npm run lint"
+    ]
   },
   "version": "1.0.0"
 }
