@@ -4,8 +4,11 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   push:
-    branches:
-      - develop
+    branches: ["develop"]
+    paths-ignore:
+      - "./docs/**"
+      - "./openapi/**"
+      - "redocly.yaml"
 jobs:
   Deploy-Development:
     runs-on: ubuntu-latest
