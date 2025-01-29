@@ -24,7 +24,7 @@
     "dev": "node --env-file=.env --watch api/server.js",
     "dev:vercel": "vercel dev",
     "lint": "standard --fix",
-    "test": "vitest",
+    "test": "dotenvx run --env-file=.env vitest",
     "coverage": "vitest run --coverage",
     "docs:build": "redocly bundle -o dist/bundle.yaml sample@v1",
     "docs:start": "redocly preview-docs",
@@ -67,7 +67,8 @@
   },
   "imports": {
     "#api/*": "./api/*",
-    "#db/*": "./db/*"
+    "#db/*": "./db/*",
+    "#test/*": "./test/*"
   },
   "lint-staged": {
     "*.js": [

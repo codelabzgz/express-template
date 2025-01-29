@@ -1,10 +1,10 @@
-import * as healthCtrl from '#api/controllers/health.js'
+import { sendResponse } from '#api/lib/http.js'
+import { authenticate } from '#api/middlewares/auth.js'
 import { Router } from 'express'
-import passport from 'passport'
 
 const router = Router()
 
-router.get('/ping', healthCtrl.ping)
-router.get('/secured-ping', passport.authenticate('jwt', { session: false }), healthCtrl.ping)
+router.get('/ping', (req, res) => sendResponse(req, res))
+router.get('/secured-ping', authenticate, (req, res) => sendResponse(req, res))
 
 export default router
