@@ -2,14 +2,14 @@ import { BadRequest, NotFound, Unauthorized } from '#api/lib/http.js'
 import { db } from '#db/index.js'
 import { users } from '#db/schemas/users.js'
 import { invalidCredentials, invalidParams, nonExistentUser, validUser } from '#test/mocks/users/index.js'
-import { randomBytes } from 'crypto'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 describe('Authentication tests for /auth/sign-in', () => {
   beforeAll(async () => {
-    await db.insert(users).values({
-      ...validUser,
-      salt: randomBytes(32).toString('hex')
+    await fetch(`${process.env.API_URL}/auth/sign-up`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(validUser)
     })
   })
 
