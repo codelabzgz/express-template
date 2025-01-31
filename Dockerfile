@@ -20,15 +20,22 @@ RUN addgroup -g 1001 -S nodejs \
   && adduser -S express -u 1001 \
   && apk add --no-cache tini
 
+# Copy only the necessary files for production (no dist)
 COPY --from=base /app/package.json ./package.json
 COPY --from=base /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
+COPY . ./
 
+# Ensure proper permissions
 RUN chown -R express:nodejs /app
+RUN mkdir -p /app/logs  # Ensure log directory exists
+RUN chmod -R 664 /app/logs  # Ensure the directory is writable
+
 USER express
 EXPOSE 3000
+
+# Adjusted health check (if no /health route exists, use /)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD wget -qO- http://localhost:3000/health || exit 1
+  CMD wget -qO- http://localhost:3000/ || exit 1
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["node", "app/dist/api/server.js"]
+CMD ["node", "api/server.js"]

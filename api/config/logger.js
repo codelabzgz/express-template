@@ -1,14 +1,21 @@
 /** @type {import('pino-http').Options} */
 export const loggerHttp = {
   level: 'info',
-  transport: {
-    target: 'pino-pretty',
-    options: {
-      colorize: true,
-      singleLine: true,
-      translateTime: 'yyyy-mm-dd HH:MM:ss.l'
-    }
-  },
+  transport: process.env.NODE_ENV === 'production'
+    ? {
+        target: 'pino/file',
+        options: {
+          destination: process.env.LOG_DIR
+        }
+      }
+    : {
+        target: 'pino-pretty',
+        options: {
+          colorize: true,
+          singleLine: true,
+          translateTime: 'yyyy-mm-dd HH:MM:ss.l'
+        }
+      },
   autoLogging: {
     ignore: (req) => req.url === '/favicon.ico'
   },
