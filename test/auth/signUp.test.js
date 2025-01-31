@@ -1,13 +1,19 @@
 import { BadRequest, Conflict } from '#api/lib/http.js'
-import { invalidUser, validUser } from '#test/mocks/users/index.js'
-import { describe, expect, it } from 'vitest'
+import { signUpValues } from '#test/mocks/users/index.js'
+import { afterAll, describe, expect, it } from 'vitest'
+import { cleanUsers } from '../utils'
 
-describe('User registration tests for /auth/sign-up', () => {
+describe.sequential('User registration tests for /auth/sign-up', () => {
+  // Here, we clean only the users that this suite uses/creates
+  afterAll(async () => {
+    await cleanUsers(signUpValues)
+  })
+
   it('Should create a new user successfully', async () => {
     const response = await fetch(`${process.env.API_URL}/auth/sign-up`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(validUser)
+      body: JSON.stringify(signUpValues.validUser)
     })
     expect(response.status).toBe(201)
   })
@@ -16,7 +22,7 @@ describe('User registration tests for /auth/sign-up', () => {
     const response = await fetch(`${process.env.API_URL}/auth/sign-up`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(validUser)
+      body: JSON.stringify(signUpValues.validUser)
     })
     const { status } = await response.json()
 
@@ -30,7 +36,7 @@ describe('User registration tests for /auth/sign-up', () => {
     const response = await fetch(`${process.env.API_URL}/auth/sign-up`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(invalidUser)
+      body: JSON.stringify(signUpValues.invalidUser)
     })
     const { status } = await response.json()
 

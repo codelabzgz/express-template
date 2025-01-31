@@ -15,9 +15,10 @@ export const validateRequest = (schemas) => (req, res, next) => {
   for (const key of ['body', 'params', 'query', 'headers']) {
     if (schemas[key] && req[key]) {
       const result = schemas[key].safeParse(req[key])
+      console.log(result)
       if (!result.success) {
         const error = result.error.errors[0]
-        console.log(error.message)
+        console.log('error on validation', error.message)
         return next(new BadRequest({ message: `${error.path[0]} ${error.message.toLowerCase()}` }))
       }
     }

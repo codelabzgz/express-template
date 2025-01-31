@@ -1,36 +1,36 @@
 import { BadRequest, NotFound, Unauthorized } from '#api/lib/http.js'
-import { db } from '#db/index.js'
-import { users } from '#db/schemas/users.js'
-import { invalidCredentials, invalidParams, nonExistentUser, validUser } from '#test/mocks/users/index.js'
-import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import { signInValues } from '#test/mocks/users/index.js'
+import { afterAll, beforeAll, describe, expect, test } from 'vitest'
+import { cleanUsers } from '../utils'
 
-describe('Authentication tests for /auth/sign-in', () => {
+describe.sequential('Authentication tests for /auth/sign-in', () => {
   beforeAll(async () => {
     await fetch(`${process.env.API_URL}/auth/sign-up`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(validUser)
+      body: JSON.stringify(signInValues.validUser)
     })
   })
 
+  // Here, we clean only the users that this suite uses/creates
   afterAll(async () => {
-    await db.delete(users)
+    await cleanUsers(signInValues)
   })
 
-  it('Should log in successfully with valid credentials', async () => {
+  test('Should log in successfully with valid credentials', async () => {
     const response = await fetch(`${process.env.API_URL}/auth/sign-in`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(validUser)
+      body: JSON.stringify(signInValues.validUser)
     })
     expect(response.status).toBe(200)
   })
 
-  it('Should return 400 for missing or invalid data', async () => {
+  test('Should return 400 for missing or invalid data', async () => {
     const response = await fetch(`${process.env.API_URL}/auth/sign-in`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(invalidParams)
+      body: JSON.stringify(signInValues.invalidParams)
     })
     const { status } = await response.json()
 
@@ -40,11 +40,11 @@ describe('Authentication tests for /auth/sign-in', () => {
     expect(status.error_message).toBe('password required')
   })
 
-  it('Should return 401 for incorrect credentials', async () => {
+  test('Should return 401 for incorrect credentials', async () => {
     const response = await fetch(`${process.env.API_URL}/auth/sign-in`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(invalidCredentials)
+      body: JSON.stringify(signInValues.invalidCredentials)
     })
     const { status } = await response.json()
 
@@ -54,11 +54,11 @@ describe('Authentication tests for /auth/sign-in', () => {
     expect(status.error_message).toBe(unauthorized.message)
   })
 
-  it('Should return 404 if user does not exist', async () => {
+  test('Should return 404 if user does not exist', async () => {
     const response = await fetch(`${process.env.API_URL}/auth/sign-in`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(nonExistentUser)
+      body: JSON.stringify(signInValues.nonExistentUser)
     })
     const { status } = await response.json()
 

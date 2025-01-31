@@ -21,6 +21,7 @@ const COOKIE_OPTIONS = {
 
 export async function signUp (req, res, next) {
   const { email, password } = req.body
+  console.log('Email =', email, 'Password =', password)
 
   const salt = randomBytes(16).toString('hex')
   const hash = pbkdf2Sync(password, salt, HASH_CONFIG.iterations, HASH_CONFIG.keyLength, HASH_CONFIG.digest).toString('hex')
@@ -36,6 +37,8 @@ export async function signUp (req, res, next) {
 
 export async function signIn (req, res, next) {
   const { email, password } = req.body
+
+  console.log('signin data:', email, password)
 
   const [user] = await db
     .select({ id: users.id, salt: users.salt, password: users.password })

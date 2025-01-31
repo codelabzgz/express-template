@@ -1,32 +1,32 @@
 import { Unauthorized } from '#api/lib/http.js'
-import { db } from '#db/index.js'
-import { users } from '#db/schemas/users.js'
-import { validUser } from '#test/mocks/users/index.js'
+import { signOutValues } from '#test/mocks/users/index.js'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import { cleanUsers } from '../utils'
 
 async function loginAndGetToken () {
   await fetch(`${process.env.API_URL}/auth/sign-up`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(validUser)
+    body: JSON.stringify(signOutValues.validUser)
   })
   const { data } = await fetch(`${process.env.API_URL}/auth/sign-in`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(validUser)
+    body: JSON.stringify(signOutValues.validUser)
   }).then(res => res.json())
   return data.token
 }
 
-describe('User logout tests for /auth/sign-out', () => {
+describe.sequential('User logout tests for /auth/sign-out', () => {
   let token = null
 
   beforeAll(async () => {
     token = await loginAndGetToken()
   })
 
+  // Here, we clean only the users that this suite uses/creates
   afterAll(async () => {
-    await db.delete(users)
+    await cleanUsers(signOutValues)
   })
 
   it('Should log out successfully with a valid session', async () => {
